@@ -42,7 +42,7 @@ public class CatStore {
 					(resultSet, rowNum) ->
 							CatEntity.builder()
 									.id( resultSet.getLong( "id" ) )
-									.createdAt( resultSet.getDate( "createdAt" ).toInstant() )
+									.createdAt( resultSet.getTimestamp( "created_at" ).toInstant() )
 									.name( resultSet.getString( "name" ) )
 									.bornAt( resultSet.getDate( "born_at" ).toLocalDate() )
 									.type( CatEntity.Type.valueOf( resultSet.getString( "type" ) ) )

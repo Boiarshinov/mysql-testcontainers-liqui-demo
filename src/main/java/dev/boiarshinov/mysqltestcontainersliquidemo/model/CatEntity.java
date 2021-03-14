@@ -4,13 +4,14 @@ import java.time.Instant;
 import java.time.LocalDate;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Value;
 
 @Value
 @Builder
 public class CatEntity {
 	long id;
-	Instant createdAt;
+	@EqualsAndHashCode.Exclude Instant createdAt;
 	String name;
 	LocalDate bornAt;
 	Type type;
