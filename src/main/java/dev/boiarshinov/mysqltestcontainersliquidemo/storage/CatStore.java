@@ -1,5 +1,7 @@
 package dev.boiarshinov.mysqltestcontainersliquidemo.storage;
 
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.Map;
 import java.util.Optional;
 import javax.sql.DataSource;
@@ -19,15 +21,18 @@ public class CatStore {
 
 	public CatStore(@Autowired DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
-		this.catInsert = new SimpleJdbcInsert( dataSource );
+		this.catInsert = new SimpleJdbcInsert( dataSource )
+				.withTableName( "cat" )
+				.usingGeneratedKeyColumns( "id" );
 	}
 
-	public void save(CatEntity catEntity) {
-		catInsert.execute( Map.of(
-			"name", catEntity.getName(),
-			"born_at", catEntity.getBornAt(),
-			"type", catEntity.getType().name()
-		) );
+	public long saveAndGetId(CatEntity catEntity) {
+		return catInsert.executeAndReturnKey( Map.of(
+				"name", catEntity.getName(),
+				"born_at", catEntity.getBornAt(),
+				"type", catEntity.getType().name(),
+				"created_at", Timestamp.from( Instant.now() )
+		) ).longValue();
 	}
 
 	public Optional<CatEntity> getById(long id) {

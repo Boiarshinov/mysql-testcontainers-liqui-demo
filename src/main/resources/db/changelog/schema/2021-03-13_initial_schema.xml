@@ -3,15 +3,32 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="2021-03-13_add_cat_table" author="boiarshinov">
         <createTable tableName="cat">
-            <column name="id" type="BIGINT"/>
-            <column name="created_at" type="TIMESTAMP" defaultValueComputed="CURRENT_TIMESTAMP"/>
-            <column name="name" type="VARCHAR(100)"/>
-            <column name="born_at" type="DATE"/>
-            <column name="type" type="VARCHAR(15)"/>
+            <column name="id"
+                    type="BIGINT"
+                    autoIncrement="true">
+                <constraints primaryKey="true" />
+            </column>
+            <column name="created_at"
+                    type="TIMESTAMP"
+                    defaultValueComputed="CURRENT_TIMESTAMP">
+                <constraints nullable="false" />
+            </column>
+            <column name="name"
+                    type="VARCHAR(100)">
+                <constraints nullable="false" />
+            </column>
+            <column name="born_at"
+                    type="DATE">
+                <constraints nullable="false" />
+            </column>
+            <column name="type"
+                    type="VARCHAR(15)">
+                <constraints nullable="false" />
+            </column>
         </createTable>
     </changeSet>
 
