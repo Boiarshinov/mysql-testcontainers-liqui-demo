@@ -1,1 +1,1 @@
-delete from cat;
+truncate cat;

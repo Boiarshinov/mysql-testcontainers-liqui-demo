@@ -3,7 +3,6 @@ package dev.boiarshinov.mysqltestcontainersliquidemo;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import dev.boiarshinov.mysqltestcontainersliquidemo.model.CatEntity;
@@ -13,15 +12,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
+@Sql(scripts = "/db/clean_up.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @SpringBootTest
 @ActiveProfiles("test")
 public class CatStoreTest {
 
 	@Autowired private CatStore store;
-
-	@Sql(scripts = "/db/clean_up.sql")
-	@BeforeEach
-	void tearDown() { }
 
 	@Test
 	void saveAndGetId() {
