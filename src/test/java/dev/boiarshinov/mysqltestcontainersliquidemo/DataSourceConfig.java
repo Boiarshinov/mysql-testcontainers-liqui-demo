@@ -14,6 +14,7 @@ import org.testcontainers.containers.MySQLContainer;
 public class DataSourceConfig {
 
 	private static final MySQLContainer mysqlContainer = new MySQLContainer("mysql:8.0.23")
+			//for connecting to testcontainer with db tools while debugging
 			.withUsername( "user" )
 			.withPassword( "pass" );
 
