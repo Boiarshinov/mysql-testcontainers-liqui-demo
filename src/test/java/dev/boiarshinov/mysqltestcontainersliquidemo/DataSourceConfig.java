@@ -13,17 +13,18 @@ import org.testcontainers.containers.MySQLContainer;
 @ActiveProfiles("test")
 public class DataSourceConfig {
 
-	private static final MySQLContainer mysqlContainer = new MySQLContainer("mysql:8.0.23")
-			//for connecting to testcontainer with db tools while debugging
-			.withUsername( "user" )
-			.withPassword( "pass" );
-
-	static {
-		mysqlContainer.start();
+	@Bean
+	public MySQLContainer mySQLContainer() {
+		final MySQLContainer mySQLContainer = new MySQLContainer( "mysql:8.0.23" )
+				//for connecting to testcontainer with db tools while debugging
+				.withUsername( "user" )
+				.withPassword( "pass" );
+		mySQLContainer.start();
+		return mySQLContainer;
 	}
 
 	@Bean
-	public DataSource dataSource() {
+	public DataSource dataSource(final MySQLContainer mysqlContainer) {
 		return DataSourceBuilder.create()
 				.url( mysqlContainer.getJdbcUrl() )
 				.username( mysqlContainer.getUsername() )

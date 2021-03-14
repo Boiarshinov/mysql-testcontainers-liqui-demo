@@ -12,7 +12,7 @@ Run in bash (convert it to powershell if you're on windows):
  -d \
  -p 3306:3306 \
  -e MYSQL_USER=user \
- -e MYSQL_DATABASE=demo-db \
+ -e MYSQL_DATABASE=first_schema \
  -e MYSQL_PASSWORD=pass \
  -e MYSQL_ROOT_PASSWORD=remote236 \
  --name mysql-demo mysql
