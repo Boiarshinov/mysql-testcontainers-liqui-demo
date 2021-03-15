@@ -22,9 +22,11 @@ public class CatStore {
 	public CatStore(@Autowired DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		this.catInsert = new SimpleJdbcInsert( dataSource )
+				.usingColumns( "name", "born_at", "type", "created_at" )
 				.withSchemaName( "first_schema" )
 				.withTableName( "cat" )
 				.usingGeneratedKeyColumns( "id" );
+		catInsert.withoutTableColumnMetaDataAccess();
 	}
 
 	public long saveAndGetId(CatEntity catEntity) {
