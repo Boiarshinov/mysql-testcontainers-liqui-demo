@@ -15,10 +15,12 @@ public class DataSourceConfig {
 
 	@Bean
 	public MySQLContainer mySQLContainer() {
-		final MySQLContainer mySQLContainer = new MySQLContainer( "mysql:8.0.23" )
-				//for connecting to testcontainer with db tools while debugging
-				.withUsername( "user" )
-				.withPassword( "pass" );
+		final MySQLContainer mySQLContainer = new MySQLContainer<>( "mysql:8.0.23" )
+				//Connect like root user to have access to run init scripts
+				.withUsername( "root" )
+				.withPassword( "" )
+//				.withEnv("MYSQL_ONETIME_PASSWORD", "pass")
+				.withInitScript("db/create_schemas.sql");
 		mySQLContainer.start();
 		return mySQLContainer;
 	}

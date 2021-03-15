@@ -1,1 +1,1 @@
-truncate cat;
+truncate first_schema.cat;

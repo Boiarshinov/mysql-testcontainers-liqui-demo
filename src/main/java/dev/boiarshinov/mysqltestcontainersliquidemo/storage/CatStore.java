@@ -22,6 +22,7 @@ public class CatStore {
 	public CatStore(@Autowired DataSource dataSource) {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 		this.catInsert = new SimpleJdbcInsert( dataSource )
+				.withSchemaName( "first_schema" )
 				.withTableName( "cat" )
 				.usingGeneratedKeyColumns( "id" );
 	}
@@ -38,7 +39,7 @@ public class CatStore {
 	public Optional<CatEntity> getById(long id) {
 		try {
 			final CatEntity catEntity = jdbcTemplate.queryForObject(
-					"select * from cat where id = ?",
+					"select * from first_schema.cat where id = ?",
 					(resultSet, rowNum) ->
 							CatEntity.builder()
 									.id( resultSet.getLong( "id" ) )
