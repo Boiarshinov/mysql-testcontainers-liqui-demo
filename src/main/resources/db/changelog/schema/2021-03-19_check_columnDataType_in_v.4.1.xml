@@ -5,6 +5,8 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
-    <includeAll path="schema" relativeToChangelogFile="true"/>
+    <changeSet id="2021-03-19_check_columnDataType_in_v.4.1" author="boiarshinov">
+        <setColumnRemarks tableName="cat" columnName="name" columnDataType="VARCHAR(100)"/>
+    </changeSet>
 
 </databaseChangeLog>
