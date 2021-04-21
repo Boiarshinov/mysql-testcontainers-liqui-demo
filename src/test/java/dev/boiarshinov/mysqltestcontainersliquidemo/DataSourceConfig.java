@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ActiveProfiles;
 import org.testcontainers.containers.MySQLContainer;
 
-@Configuration
+//@Configuration
 @ActiveProfiles("test")
 public class DataSourceConfig {
 
