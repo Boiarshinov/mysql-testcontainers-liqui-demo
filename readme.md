@@ -17,3 +17,15 @@ Run in bash (convert it to powershell if you're on windows):
  -e MYSQL_ROOT_PASSWORD=remote236 \
  --name mysql-demo mysql
 ```
+
+# H2 vs Testcontainers
+
+Преимущества h2:
+- Легкость настройки
+- Скорость исполнения тестов
+
+Недостатки h2:
+- Ключевые слова, свойственные СУБД, могут отсутствовать в h2 (см. `virtual`)
+- Некоторый синтаксис не поддерживается h2 (см. `truncate`)
+
+[Статья про недостатки h2](https://phauer.com/2017/dont-use-in-memory-databases-tests-h2/)

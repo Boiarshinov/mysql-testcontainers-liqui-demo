@@ -29,6 +29,10 @@
                     type="VARCHAR(15)">
                 <constraints nullable="false" />
             </column>
+            <!-- `virtual` является ключевым словом в mysql, но не в h2 -->
+            <column name="virtual"
+                    type="BOOL">
+            </column>
         </createTable>
     </changeSet>
 
