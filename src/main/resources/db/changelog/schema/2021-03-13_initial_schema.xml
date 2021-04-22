@@ -3,7 +3,7 @@
         xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+        http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.10.xsd">
 
     <changeSet id="2021-03-13_add_cat_table" author="boiarshinov">
         <createTable tableName="cat">
@@ -30,9 +30,9 @@
                 <constraints nullable="false" />
             </column>
             <!-- `virtual` является ключевым словом в mysql, но не в h2 -->
-            <column name="virtual"
-                    type="BOOL">
-            </column>
+<!--            <column name="virtual"-->
+<!--                    type="BOOL">-->
+<!--            </column>-->
         </createTable>
     </changeSet>
 

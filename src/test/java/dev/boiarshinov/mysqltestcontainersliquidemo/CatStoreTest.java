@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
 import dev.boiarshinov.mysqltestcontainersliquidemo.model.CatEntity;
 import dev.boiarshinov.mysqltestcontainersliquidemo.storage.CatStore;
@@ -19,6 +20,7 @@ import org.springframework.test.context.jdbc.SqlMergeMode;
 @Sql(scripts = "/db/clean_up.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @SpringBootTest
 @ActiveProfiles("test")
+@TestInstance( TestInstance.Lifecycle.PER_CLASS )
 public class CatStoreTest {
 
 	@Autowired private CatStore store;
